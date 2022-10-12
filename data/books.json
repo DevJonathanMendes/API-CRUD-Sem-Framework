@@ -1,0 +1,51 @@
+[
+    {
+        "bookId": 1206,
+        "title": "C++: Como Programar.",
+        "pages": 1208,
+        "published": 2006,
+        "author": "Deitel."
+    },
+    {
+        "bookId": 4209,
+        "title": "Código limpo.",
+        "pages": 425,
+        "published": 2009,
+        "author": "Robert C. Martin."
+    },
+    {
+        "bookId": 1012,
+        "title": "JavaScript: O Guia Definitivo.",
+        "pages": 1080,
+        "published": 2012,
+        "author": "David Flanagan."
+    },
+    {
+        "bookId": 3221,
+        "title": "Halloween: O Legado de Michael Myers.",
+        "pages": 325,
+        "published": 2021,
+        "author": "Dustin McNeill e Travis Mullins."
+    },
+    {
+        "bookId": 4320,
+        "title": "Medicina Macabra.",
+        "pages": 432,
+        "published": 2020,
+        "author": "Thomas Morris."
+    },
+    {
+        "bookId": 3117,
+        "title": "Aprendendo Node: Usando JavaScript no Servidor.",
+        "pages": 312,
+        "published": 2017,
+        "author": "Shelley Powers."
+    },
+    {
+        "bookId": 3410,
+        "title": "Padrões JavaScript.",
+        "pages": 340,
+        "published": 2010,
+        "author": "David Flanagan."
+    }
+]
