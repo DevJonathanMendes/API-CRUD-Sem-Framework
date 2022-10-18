@@ -10,7 +10,7 @@ const routes = (req, res) => {
         res.writeHead(200).end("OK");
     }
     else if (method == "GET" && regUrl.test(url)) {
-        res.writeHead(200).end("OK");
+        controllers.getAllBooks();
     }
     else if (method == "POST" && regUrl.test(url)) {
         res.writeHead(200).end("OK");
