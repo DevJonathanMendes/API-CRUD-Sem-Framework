@@ -1,7 +1,27 @@
+const regUrlWithId = /^\/books\/\d{1,4}$/;
+const regUrl = /^\/(books\/?)?$/;
+
 const routes = (req, res) => {
-    req.url == "/" ?
-        res.writeHead(200).end("Ok.") :
-        res.writeHead(501).end("Not Implemented.");
+    const { url, method } = req;
+
+    if (method == "GET" && regUrlWithId.test(url)) {
+        res.writeHead(200).end("OK");
+    }
+    else if (method == "GET" && regUrl.test(url)) {
+        res.writeHead(200).end("OK");
+    }
+    else if (method == "POST" && regUrl.test(url)) {
+        res.writeHead(200).end("OK");
+    }
+    else if (method == "PATCH" && regUrlWithId.test(url)) {
+        res.writeHead(200).end("OK");
+    }
+    else if (method == "DELETE" && regUrlWithId.test(url)) {
+        res.writeHead(200).end("OK");
+    }
+    else {
+        res.writeHead(501).end("Not Implemented");
+    };
 };
 
 module.exports = routes;
