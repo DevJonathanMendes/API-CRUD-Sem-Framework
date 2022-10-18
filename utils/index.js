@@ -1,3 +1,15 @@
+const successHeader = {
+    "Access-Control-Allow-Origin": "*",
+    "Accept": "application/json",
+    "Content-Type": "application/json; charset=utf8"
+};
+
+const errorHeader = {
+    "Access-Control-Allow-Origin": "*",
+    "Accept": "application/json",
+    "Content-Type": "text/plain; charset=utf8"
+};
+
 const utils = {
     SetHttp: function (req, res) {
         this.req = req;
