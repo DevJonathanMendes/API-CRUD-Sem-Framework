@@ -1,3 +1,5 @@
+const controllers = require("../controllers/index");
+
 const regUrlWithId = /^\/books\/\d{1,4}$/;
 const regUrl = /^\/(books\/?)?$/;
 
