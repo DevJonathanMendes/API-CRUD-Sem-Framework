@@ -13,7 +13,7 @@ const routes = (req, res) => {
         controllers.getAllBooks();
     }
     else if (method == "POST" && regUrl.test(url)) {
-        res.writeHead(200).end("OK");
+        controllers.createNewBook();
     }
     else if (method == "PATCH" && regUrlWithId.test(url)) {
         res.writeHead(200).end("OK");
