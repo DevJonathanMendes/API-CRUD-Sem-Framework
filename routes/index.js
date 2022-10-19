@@ -19,7 +19,7 @@ const routes = (req, res) => {
         res.writeHead(200).end("OK");
     }
     else if (method == "DELETE" && regUrlWithId.test(url)) {
-        res.writeHead(200).end("OK");
+        controllers.deleteBook();
     }
     else {
         res.writeHead(501).end("Not Implemented");
