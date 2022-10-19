@@ -51,6 +51,42 @@ const controllers = {
         });
     },
 
+    updateBook: () => {
+        req.on("data", dataBuffer => {
+            readFile(pathFile, encoding, (error, fileBuffer) => {
+                if (error) {
+                    response(500);
+                } else {
+                    try {
+                        const fileBooks = JSON.parse(fileBuffer);
+
+                        const id = req.url.match(regUrlId)[0];
+                        const bookIds = fileBooks.map(book => book.id);
+
+                        if (bookIds.includes(Number(id))) {
+                            const dataBook = JSON.parse(dataBuffer);
+                            validateValues(fileBooks, dataBook);
+
+                            const book = fileBooks.filter(book => book.id == id)[0];
+                            const books = fileBooks.filter(book => book.id != id);
+
+                            const updateBook = Object.assign(book, dataBook);
+                            books.unshift(updateBook);
+
+                            writeFile(pathFile, stringify(books), error => {
+                                error ? response(500) : response(200);
+                            });
+                        } else {
+                            response(404);
+                        };
+                    } catch (error) {
+                        response(400, error.message);
+                    };
+                };
+            });
+        });
+    },
+
     deleteBook: () => {
         readFile(pathFile, encoding, (error, fileBuffer) => {
             if (error) {
