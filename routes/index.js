@@ -7,7 +7,7 @@ const routes = (req, res) => {
     const { url, method } = req;
 
     if (method == "GET" && regUrlWithId.test(url)) {
-        res.writeHead(200).end("OK");
+        controllers.findBookById();
     }
     else if (method == "GET" && regUrl.test(url)) {
         controllers.getAllBooks();
