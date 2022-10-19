@@ -27,6 +27,30 @@ const controllers = {
         });
     },
 
+    createNewBook: () => {
+        req.on("data", dataBuffer => {
+            readFile(pathFile, encoding, (error, fileBuffer) => {
+                if (error) {
+                    response(500);
+                } else {
+                    try {
+                        const fileBooks = JSON.parse(fileBuffer);
+                        const dataBook = JSON.parse(dataBuffer);
+
+                        validateValues(fileBooks, dataBook);
+                        fileBooks.unshift(dataBook);
+
+                        writeFile(pathFile, stringify(fileBooks), error => {
+                            error ? response(500) : response(201);
+                        });
+                    } catch (error) {
+                        response(400, error.message);
+                    };
+                };
+            });
+        });
+    },
+
     deleteBook: () => {
         readFile(pathFile, encoding, (error, fileBuffer) => {
             if (error) {
