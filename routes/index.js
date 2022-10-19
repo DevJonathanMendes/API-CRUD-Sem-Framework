@@ -16,7 +16,7 @@ const routes = (req, res) => {
         controllers.createNewBook();
     }
     else if (method == "PATCH" && regUrlWithId.test(url)) {
-        res.writeHead(200).end("OK");
+        controllers.updateBook();
     }
     else if (method == "DELETE" && regUrlWithId.test(url)) {
         controllers.deleteBook();
