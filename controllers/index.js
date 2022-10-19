@@ -1,5 +1,5 @@
 const { readFile, writeFile } = require("fs");
-const { response } = require("../utils/index");
+const { validateValues, response } = require("../utils/index");
 
 const pathFile = __dirname + "/../data/books.json";
 const encoding = "utf8";
