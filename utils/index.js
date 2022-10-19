@@ -10,10 +10,53 @@ const errorHeader = {
     "Content-Type": "text/plain; charset=utf8"
 };
 
+const validateId = (fileBooks, dataBook) => {
+    const { id } = dataBook;
+    const bookIds = fileBooks.map(book => book.id);
+    return bookIds.includes(Number(id));
+};
+
+const throwError = message => { throw new Error(message); };
+
+const regId = /^[0-9]{1,4}$/; // Números positivos. Dígitos: Min 1 | Max 4. 
+const regString = /^[\d\D]{2,64}$/im; // String, aceita acentos. Dígitos: Min 2 | Max 64.
+const regPages = /^\d{1,4}$/; // Números positivos. Dígitos: Min 1 | Max 4.
+const regPublished = /^\d{4,4}$/; // Números positivos. Dígitos: Min 4 | Max 4.
+
+
 const utils = {
     SetHttp: function (req, res) {
         this.req = req;
         this.res = res;
+    },
+
+    validateValues: (fileBooks, dataBook) => {
+        Object.keys(dataBook).forEach(item => {
+            switch (item) {
+                case "id":
+                    if (typeof dataBook[item] != "number" || !regId.test(dataBook[item]) || validateId(fileBooks, dataBook)) {
+                        throwError("Invalid Book ID.");
+                    }; break;
+                case "title":
+                    if (typeof dataBook[item] != "string" || !regString.test(dataBook[item])) {
+                        throwError("Invalid Title.");
+                    }; break;
+                case "pages":
+                    if (typeof dataBook[item] != "number" || !regPages.test(dataBook[item])) {
+                        throwError("Invalid Pages.");
+                    }; break;
+                case "published":
+                    if (typeof dataBook[item] != "number" || !regPublished.test(dataBook[item])) {
+                        throwError("Invalid Published.");
+                    }; break;
+                case "author":
+                    if (typeof dataBook[item] != "string" || !regString.test(dataBook[item])) {
+                        throwError("Invalid Author.");
+                    }; break;
+                default: throwError("Invalid JSON.");
+            };
+        });
+        return true;
     },
 
     response: (code, data) => {
