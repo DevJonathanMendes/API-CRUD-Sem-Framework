@@ -14,6 +14,19 @@ const controllers = {
         });
     },
 
+    findBookById: () => {
+        readFile(pathFile, encoding, (error, fileBuffer) => {
+            if (error) {
+                response(500);
+            } else {
+                const fileBooks = JSON.parse(fileBuffer);
+                const id = req.url.match(regUrlId)[0];
+                const book = fileBooks.filter(book => book.id == id)[0];
+                book ? response(200, stringify(book)) : response(204);
+            };
+        });
+    },
+
     deleteBook: () => {
         readFile(pathFile, encoding, (error, fileBuffer) => {
             if (error) {
