@@ -1,4 +1,4 @@
-# APIBook
+# API Sobre Livros
 
 Por desafio, aprendizado e experiência prática, resolvi desenvolver essa API simples sem framework.
 
